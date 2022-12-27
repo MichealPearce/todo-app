@@ -19,11 +19,11 @@ const isAdmin = computed(() =>
 <template>
 	<nav class="navigation-main">
 		<div class="branding">
-			<h1 class="brand-name">Construct</h1>
+			<h1 class="brand-name">ToDo</h1>
 		</div>
 
 		<div class="menu">
-			<ConstructLink to="/">Home</ConstructLink>
+			<!-- <ConstructLink to="/">Home</ConstructLink> -->
 
 			<ConstructLink
 				v-if="isAdmin"

@@ -31,3 +31,9 @@ export interface AppSessionData extends ModelData {
 	id: string
 	data: Record<string, any>
 }
+
+export interface TaskData extends ModelUUIDData {
+	title: string
+	complete: boolean
+	body?: string
+}

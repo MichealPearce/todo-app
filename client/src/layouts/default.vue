@@ -20,5 +20,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .default-layout {
+	@include flex(column);
 }
 </style>

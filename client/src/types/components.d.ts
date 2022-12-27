@@ -16,5 +16,9 @@ declare module '@vue/runtime-core' {
     NavigationMain: typeof import('./../components/Navigation/Main.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TaskCreate: typeof import('./../components/Task/Create.vue')['default']
+    TaskCreateForm: typeof import('./../components/Task/CreateForm.vue')['default']
+    TaskItem: typeof import('./../components/Task/Item.vue')['default']
+    TaskList: typeof import('./../components/Task/List.vue')['default']
   }
 }

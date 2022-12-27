@@ -1,4 +1,5 @@
 import { AppSession } from '@construct/server/database/models/AppSession'
+import { Task } from '@construct/server/database/models/Task'
 import { User } from '@construct/server/database/models/User'
 import { UserRole } from '@construct/server/database/models/UserRole'
 import { hashPassword } from '@construct/server/includes/functions'
@@ -10,7 +11,7 @@ export async function registerDatabase(instance: FastifyInstance) {
 	const source = new DataSource({
 		type: 'sqlite',
 		database: resolve(__BIN_ROOT__, 'database.sqlite'),
-		entities: [User, UserRole, AppSession],
+		entities: [User, UserRole, AppSession, Task],
 		synchronize: true,
 		// logging: true,
 	})
@@ -20,7 +21,7 @@ export async function registerDatabase(instance: FastifyInstance) {
 		await source.initialize()
 		instance.log.info('connected to database')
 	} catch (error) {
-		instance.log.error('failed to connect to database', error)
+		instance.log.error(error, 'failed to connect to database')
 	}
 
 	instance.decorate('database', source)

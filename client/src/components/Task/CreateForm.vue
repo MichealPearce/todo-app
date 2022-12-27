@@ -1,0 +1,65 @@
+<script lang="ts">
+import { useTasks } from '@construct/client/stores/tasks'
+import { TaskData } from '@construct/shared'
+import { defineComponent, reactive } from 'vue'
+
+export default defineComponent({
+	name: 'TaskCreateForm',
+})
+</script>
+
+<script setup lang="ts">
+const tasks = useTasks()
+
+const emit = defineEmits<{
+	(event: 'created', data: TaskData): void
+}>()
+
+const data = reactive({
+	title: '',
+})
+
+async function create() {
+	try {
+		const created = await tasks.create(data)
+		emit('created', created)
+		data.title = ''
+	} catch (error) {
+		console.error('failed to create task', error)
+	}
+}
+</script>
+
+<template>
+	<form
+		class="task-create-form"
+		@submit.prevent="create"
+	>
+		<ConstructInput
+			v-model="data.title"
+			placeholder="Task Title..."
+		/>
+		<ConstructButton>Create Task</ConstructButton>
+	</form>
+</template>
+
+<style lang="scss" scoped>
+.task-create-form {
+	@include flex(row);
+	width: 100%;
+
+	.construct-input,
+	.construct-button {
+		height: 100%;
+		border-radius: 0px;
+	}
+
+	.construct-input {
+		flex: 1;
+
+		& > :deep(input) {
+			border-radius: 0px;
+		}
+	}
+}
+</style>
