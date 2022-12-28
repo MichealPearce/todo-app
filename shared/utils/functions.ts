@@ -43,7 +43,7 @@ export function cloneDeep<A>(target: A): A {
  */
 export function defaults<A extends Record<any, any>, B extends A>(
 	main: A,
-	...sources: B[]
+	...sources: Partial<B>[]
 ): A & B {
 	return sources.reduce((result: any, current) => {
 		for (const [key, value] of Object.entries(current))

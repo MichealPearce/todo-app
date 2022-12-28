@@ -1,4 +1,5 @@
 import { AppSession } from '@construct/server/database/models/AppSession'
+import { Project } from '@construct/server/database/models/Project'
 import { Task } from '@construct/server/database/models/Task'
 import { User } from '@construct/server/database/models/User'
 import { UserRole } from '@construct/server/database/models/UserRole'
@@ -11,7 +12,7 @@ export async function registerDatabase(instance: FastifyInstance) {
 	const source = new DataSource({
 		type: 'sqlite',
 		database: resolve(__BIN_ROOT__, 'database.sqlite'),
-		entities: [User, UserRole, AppSession, Task],
+		entities: [User, UserRole, AppSession, Project, Task],
 		synchronize: true,
 		// logging: true,
 	})

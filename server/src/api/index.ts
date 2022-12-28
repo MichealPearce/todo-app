@@ -1,4 +1,5 @@
 import { authRoute } from '@construct/server/api/auth'
+import { projectsRoute } from '@construct/server/api/projects'
 import { tasksRoute } from '@construct/server/api/tasks'
 import { userRolesRoute } from '@construct/server/api/userRoles'
 import { usersRoute } from '@construct/server/api/users'
@@ -23,4 +24,5 @@ export async function registerAPI(instance: FastifyInstance) {
 		.register(usersRoute.register)
 		.register(userRolesRoute.register)
 		.register(tasksRoute.register)
+		.register(projectsRoute.register)
 }

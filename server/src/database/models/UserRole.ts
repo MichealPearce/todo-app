@@ -12,6 +12,8 @@ export class UserRole extends Model<UserRoleData> implements UserRoleData {
 	declare display_name: string
 
 	@ManyToMany(() => User, user => user.roles)
-	@JoinTable()
+	@JoinTable({
+		name: 'user_roles',
+	})
 	declare users?: User[]
 }

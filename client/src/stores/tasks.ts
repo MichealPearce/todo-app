@@ -29,7 +29,7 @@ export const useTasks = defineStore('tasks', context => {
 		return items
 	}
 
-	function create(data: Pick<TaskData, 'title' | 'body'>) {
+	function create(data: Pick<TaskData, 'title' | 'body' | 'project_uuid'>) {
 		return api
 			.post<TaskData>('tasks', data)
 			.then(res => res.data)

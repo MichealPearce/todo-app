@@ -1,4 +1,5 @@
 <script lang="ts">
+import { injectProject } from '@construct/client/stores/projects'
 import { useTasks } from '@construct/client/stores/tasks'
 import { TaskData } from '@construct/shared'
 import { defineComponent, reactive } from 'vue'
@@ -9,6 +10,7 @@ export default defineComponent({
 </script>
 
 <script setup lang="ts">
+const project = injectProject()
 const tasks = useTasks()
 
 const emit = defineEmits<{
@@ -20,8 +22,14 @@ const data = reactive({
 })
 
 async function create() {
+	const taskProject = project.value
+	if (!taskProject) return
+
 	try {
-		const created = await tasks.create(data)
+		const created = await tasks.create({
+			...data,
+			project_uuid: taskProject.uuid,
+		})
 		emit('created', created)
 		data.title = ''
 	} catch (error) {

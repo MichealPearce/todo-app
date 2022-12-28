@@ -32,8 +32,16 @@ export interface AppSessionData extends ModelData {
 	data: Record<string, any>
 }
 
+export interface ProjectData extends ModelUUIDData {
+	name: string
+	tasks: TaskData[]
+	owners: UserData[]
+}
+
 export interface TaskData extends ModelUUIDData {
 	title: string
 	complete: boolean
+	project_uuid: string
+	project: ProjectData
 	body?: string
 }

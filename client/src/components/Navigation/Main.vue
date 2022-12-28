@@ -23,7 +23,7 @@ const isAdmin = computed(() =>
 		</div>
 
 		<div class="menu">
-			<!-- <ConstructLink to="/">Home</ConstructLink> -->
+			<ConstructLink to="/">Home</ConstructLink>
 
 			<ConstructLink
 				v-if="isAdmin"

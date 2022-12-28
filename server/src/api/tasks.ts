@@ -34,12 +34,20 @@ export class TasksListEndpoint extends Endpoint<{
 export class TasksCreateEndpoint extends Endpoint<{
 	body: {
 		title: string
+		project_uuid: string
 		body?: string
 		complete?: boolean
 	}
 }> {
 	get data() {
-		return defaults(extract(this.request.body, ['title', 'body']), {
+		const body = extract(this.request.body, [
+			'title',
+			'body',
+			'complete',
+			'project_uuid',
+		])
+
+		return defaults(body, {
 			complete: false,
 		})
 	}
