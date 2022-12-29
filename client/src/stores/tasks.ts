@@ -1,6 +1,14 @@
 import { defineStore } from '@construct/client/includes/functions'
 import { TaskData } from '@construct/shared'
-import { reactive } from 'vue'
+import { inject, InjectionKey, provide, reactive, Ref } from 'vue'
+
+export type TaskInjectionValue = Ref<TaskData | undefined>
+
+export const TaskInjectionKey: InjectionKey<TaskInjectionValue> = Symbol('task')
+
+export const provideTask = (task: TaskInjectionValue) =>
+	provide(TaskInjectionKey, task)
+export const injectTask = () => inject(TaskInjectionKey)!
 
 export const useTasks = defineStore('tasks', context => {
 	const { api } = context
@@ -29,6 +37,13 @@ export const useTasks = defineStore('tasks', context => {
 		return items
 	}
 
+	function fetch(uuid: string) {
+		return api
+			.get(`tasks/${uuid}`)
+			.then(res => res.data)
+			.then(set)
+	}
+
 	function create(data: Pick<TaskData, 'title' | 'body' | 'project_uuid'>) {
 		return api
 			.post<TaskData>('tasks', data)
@@ -47,6 +62,7 @@ export const useTasks = defineStore('tasks', context => {
 		items,
 		get,
 		set,
+		fetch,
 		list,
 		create,
 		update,
