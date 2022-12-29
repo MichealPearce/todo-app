@@ -46,8 +46,9 @@ async function create() {
 		<ConstructInput
 			v-model="data.title"
 			placeholder="Task Title..."
+			required
 		/>
-		<ConstructButton>Create Task</ConstructButton>
+		<ConstructButton type="submit">Create Task</ConstructButton>
 	</form>
 </template>
 

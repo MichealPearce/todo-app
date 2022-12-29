@@ -13,6 +13,7 @@ const props = defineProps<{
 	type?: string
 	placeholder?: string
 	autocomplete?: string
+	required?: boolean
 }>()
 
 const emit = defineEmits<{
@@ -25,7 +26,7 @@ const value = computed({
 })
 
 const inputProps = computed(() =>
-	extract(props, ['type', 'placeholder', 'autocomplete']),
+	extract(props, ['type', 'placeholder', 'autocomplete', 'required']),
 )
 </script>
 

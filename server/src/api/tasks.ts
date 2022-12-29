@@ -53,7 +53,11 @@ export class TasksCreateEndpoint extends Endpoint<{
 	}
 
 	handle() {
-		return Task.init(this.data).save()
+		const data = this.data
+
+		if (not(data.title)) throw new ServerError('title is required', 400)
+
+		return Task.init(data).save()
 	}
 }
 
