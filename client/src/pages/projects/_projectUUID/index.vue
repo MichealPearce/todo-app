@@ -64,6 +64,9 @@ onBeforeMount(listTasks)
 
 	.task-list {
 		flex: 1;
+
+		overflow: hidden;
+		overflow-y: auto;
 	}
 }
 </style>
