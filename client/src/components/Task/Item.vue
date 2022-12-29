@@ -50,6 +50,12 @@ async function toggleCompleteTask() {
 		<div class="details">
 			<h4 class="title">{{ item.title }}</h4>
 		</div>
+
+		<ConstructLink :to="`/projects/${item.project_uuid}/${item.uuid}`">
+			<ConstructButton>
+				<i class="fa-regular fa-circle-right"></i>
+			</ConstructButton>
+		</ConstructLink>
 	</div>
 </template>
 
@@ -72,6 +78,14 @@ async function toggleCompleteTask() {
 
 		background-color: $color-primary-text;
 		color: $color-primary;
+	}
+
+	.details {
+		flex: 1;
+	}
+
+	.construct-link {
+		text-decoration: none;
 	}
 
 	&.complete .details {
