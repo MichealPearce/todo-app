@@ -1,9 +1,9 @@
 import { defineStore } from '@construct/client/includes/functions'
 import { useTasks } from '@construct/client/stores/tasks'
 import { ProjectData, TaskData } from '@construct/shared'
-import { ComputedRef, inject, InjectionKey, provide, reactive } from 'vue'
+import { inject, InjectionKey, provide, reactive, Ref } from 'vue'
 
-export type ProjectInjectionValue = ComputedRef<ProjectData | undefined>
+export type ProjectInjectionValue = Ref<ProjectData | undefined>
 
 export const ProjectInjectionKey: InjectionKey<ProjectInjectionValue> = Symbol(
 	'ProjectInjectionKey',
@@ -46,7 +46,7 @@ export const useProjects = defineStore('projects', context => {
 			.then(set)
 	}
 
-	function create(data: Pick<ProjectData, 'name'>) {
+	function create(data: Pick<ProjectData, 'title'>) {
 		return api
 			.post<ProjectData>('projects', data)
 			.then(res => res.data)
