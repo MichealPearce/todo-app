@@ -7,7 +7,7 @@ import { Column, Entity, JoinTable, ManyToMany, OneToMany } from 'typeorm'
 @Entity()
 export class Project extends ModelUUID<ProjectData> implements ProjectData {
 	@Column('varchar', { length: 255 })
-	declare name: string
+	declare title: string
 
 	@OneToMany(() => Task, task => task.project)
 	declare tasks: Task[]

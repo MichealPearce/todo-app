@@ -33,7 +33,7 @@ export interface AppSessionData extends ModelData {
 }
 
 export interface ProjectData extends ModelUUIDData {
-	name: string
+	title: string
 	tasks: TaskData[]
 	owners: UserData[]
 }
