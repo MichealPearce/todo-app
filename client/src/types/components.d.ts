@@ -14,11 +14,15 @@ declare module '@vue/runtime-core' {
     ConstructLink: typeof import('./../components/Construct/Link.vue')['default']
     ConstructPage: typeof import('./../components/Construct/Page.vue')['default']
     NavigationMain: typeof import('./../components/Navigation/Main.vue')['default']
+    ProjectItem: typeof import('./../components/Project/Item.vue')['default']
+    ProjectList: typeof import('./../components/Project/List.vue')['default']
+    ProjectTitle: typeof import('./../components/Project/Title.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     TaskCreate: typeof import('./../components/Task/Create.vue')['default']
     TaskCreateForm: typeof import('./../components/Task/CreateForm.vue')['default']
     TaskItem: typeof import('./../components/Task/Item.vue')['default']
     TaskList: typeof import('./../components/Task/List.vue')['default']
+    TaskTitle: typeof import('./../components/Task/Title.vue')['default']
   }
 }

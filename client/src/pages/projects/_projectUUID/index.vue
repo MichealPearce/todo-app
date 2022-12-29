@@ -46,7 +46,7 @@ onBeforeMount(listTasks)
 		v-if="project"
 		class="projects-single-index-page"
 	>
-		<h2 v-text="project.name" />
+		<ProjectTitle level="2" />
 
 		<TaskList :items="Array.from(state.tasks.values())" />
 

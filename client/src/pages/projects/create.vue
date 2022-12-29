@@ -13,7 +13,7 @@ const router = useRouter()
 const projects = useProjects()
 
 const data = reactive({
-	name: '',
+	title: '',
 })
 
 async function createProject() {
@@ -32,7 +32,7 @@ async function createProject() {
 
 		<form @submit.prevent="createProject">
 			<ConstructInput
-				v-model="data.name"
+				v-model="data.title"
 				placeholder="Project Name..."
 			/>
 

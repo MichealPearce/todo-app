@@ -50,19 +50,7 @@ onBeforeMount(listProjects)
 			</ConstructLink>
 		</header>
 
-		<div class="items">
-			<div
-				v-for="item of items"
-				:key="item.uuid"
-				class="item"
-			>
-				<h4 v-text="item.name" />
-
-				<ConstructLink :to="`/projects/${item.uuid}`">
-					<ConstructButton>View</ConstructButton>
-				</ConstructLink>
-			</div>
-		</div>
+		<ProjectList :items="items" />
 	</ConstructPage>
 </template>
 
