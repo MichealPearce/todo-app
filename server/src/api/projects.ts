@@ -36,11 +36,11 @@ export class ProjectsListEndpoint extends Endpoint<{
 @projectsRoute.endpoint('POST')
 export class ProjectsCreateEndpoint extends Endpoint<{
 	body: {
-		name: string
+		title: string
 	}
 }> {
 	get data() {
-		return extract(this.request.body, ['name'])
+		return extract(this.request.body, ['title'])
 	}
 
 	handle() {
@@ -75,7 +75,7 @@ export class ProjectsUpdateEndpoint extends Endpoint<{
 		uuid: string
 	}
 	body: {
-		name?: string
+		title?: string
 	}
 }> {
 	get uuid() {
@@ -83,7 +83,7 @@ export class ProjectsUpdateEndpoint extends Endpoint<{
 	}
 
 	get data() {
-		return extract(this.request.body, ['name'])
+		return extract(this.request.body, ['title'])
 	}
 
 	async handle() {
